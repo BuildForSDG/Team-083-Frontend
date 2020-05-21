@@ -1,7 +1,7 @@
 {
-  "name": "material-dashboard-react",
+  "name": "smeund",
   "version": "1.8.0",
-  "description": "Material Dashboard React. Coded by Creative Tim",
+  "description": "A software that connects SMEs to investors",
   "private": false,
   "main": "dist/index.js",
   "dependencies": {
