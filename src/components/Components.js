@@ -7,28 +7,30 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
 // core components
-import Header from 'components/Header/Header.js';
-import Footer from 'components/Footer/Footer.js';
-import GridContainer from 'components/Grid/GridContainer.js';
-import GridItem from 'components/Grid/GridItem.js';
-import Button from 'components/CustomButtons/Button.js';
-import Parallax from 'components/Parallax/Parallax.js';
-// sections for this page
-import HeaderLinks from 'components/Header/HeaderLinks.js';
-import SectionBasics from './Sections/SectionBasics.js';
-import SectionNavbars from './Sections/SectionNavbars.js';
-import SectionTabs from './Sections/SectionTabs.js';
-import SectionPills from './Sections/SectionPills.js';
-import SectionNotifications from './Sections/SectionNotifications.js';
-import SectionTypography from './Sections/SectionTypography.js';
-import SectionJavascript from './Sections/SectionJavascript.js';
-import SectionCarousel from './Sections/SectionCarousel.js';
-import SectionCompletedExamples from './Sections/SectionCompletedExamples.js';
-import SectionLogin from './Sections/SectionLogin.js';
-import SectionExamples from './Sections/SectionExamples.js';
-import SectionDownload from './Sections/SectionDownload.js';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
+import GridContainer from './Grid/GridContainer';
+import GridItem from './Grid/GridItem';
+import Button from './CustomButtons/Button';
+import Parallax from './Parallax/Parallax';
 
-import styles from 'assets/jss/material-kit-react/views/components.js';
+// sections for this page
+import HeaderLinks from './Header/HeaderLinks';
+import styles from '../assets/jss/material-kit-react/views/components';
+import SectionBasics from './Sections/SectionBasics';
+import SectionNavbars from './Sections/SectionNavbars';
+import SectionTabs from './Sections/SectionTabs';
+import SectionPills from './Sections/SectionPills';
+import SectionNotifications from './Sections/SectionNotifications';
+import SectionTypography from './Sections/SectionTypography';
+import SectionJavascript from './Sections/SectionJavascript';
+import SectionCarousel from './Sections/SectionCarousel';
+import SectionCompletedExamples from './Sections/SectionCompletedExamples';
+import SectionLogin from './Sections/SectionLogin';
+import SectionExamples from './Sections/SectionExamples';
+import SectionDownload from './Sections/SectionDownload';
+
+import img from '../assets/img/bg4.jpg';
 
 const useStyles = makeStyles(styles);
 
@@ -36,7 +38,7 @@ export default function Components(props) {
   const classes = useStyles();
   const { ...rest } = props;
   return (
-    <div>
+    <>
       <Header
         brand="Material Kit React"
         rightLinks={<HeaderLinks />}
@@ -48,7 +50,7 @@ export default function Components(props) {
         }}
         {...rest}
       />
-      <Parallax image={require('assets/img/bg4.jpg')}>
+      <Parallax image={img}>
         <div className={classes.container}>
           <GridContainer>
             <GridItem>
@@ -83,6 +85,6 @@ export default function Components(props) {
         <SectionDownload />
       </div>
       <Footer />
-    </div>
+    </>
   );
 }

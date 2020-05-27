@@ -25,12 +25,28 @@ import Menu from '@material-ui/icons/Menu';
 
 // core components
 
-import styles from 'assets/jss/material-kit-react/components/headerStyle.js';
+import styles from '../../assets/jss/material-kit-react/components/headerStyle';
 
 const useStyles = makeStyles(styles);
 
 export default function Header(props) {
   const classes = useStyles();
+
+  const headerColorChange = () => {
+    const { color, changeColorOnScroll } = props;
+
+    const windowsScrollTop = window.pageYOffset;
+
+    if (windowsScrollTop > changeColorOnScroll.height) {
+      document.body.getElementsByTagName('header')[0].classList.remove(classes[color]);
+
+      document.body.getElementsByTagName('header')[0].classList.add(classes[changeColorOnScroll.color]);
+    } else {
+      document.body.getElementsByTagName('header')[0].classList.add(classes[color]);
+
+      document.body.getElementsByTagName('header')[0].classList.remove(classes[changeColorOnScroll.color]);
+    }
+  };
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -50,21 +66,6 @@ export default function Header(props) {
     setMobileOpen(!mobileOpen);
   };
 
-  const headerColorChange = () => {
-    const { color, changeColorOnScroll } = props;
-
-    const windowsScrollTop = window.pageYOffset;
-
-    if (windowsScrollTop > changeColorOnScroll.height) {
-      document.body.getElementsByTagName('header')[0].classList.remove(classes[color]);
-
-      document.body.getElementsByTagName('header')[0].classList.add(classes[changeColorOnScroll.color]);
-    } else {
-      document.body.getElementsByTagName('header')[0].classList.add(classes[color]);
-
-      document.body.getElementsByTagName('header')[0].classList.remove(classes[changeColorOnScroll.color]);
-    }
-  };
 
   const { color, rightLinks, leftLinks, brand, fixed, absolute } = props;
 

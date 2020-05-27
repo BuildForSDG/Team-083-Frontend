@@ -6,16 +6,18 @@ import 'perfect-scrollbar/css/perfect-scrollbar.css';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 // core components
-import Navbar from 'components/Navbars/Navbar.js';
-import Footer from 'components/Footer/Footer.js';
-import Sidebar from 'components/Sidebar/Sidebar.js';
+import routes from '../routes';
 
-import routes from 'routes.js';
+import styles from '../assets/jss/material-dashboard-react/layouts/adminStyle';
 
-import styles from 'assets/jss/material-dashboard-react/layouts/adminStyle.js';
+import bgImage from '../assets/img/sidebar-2.jpg';
+import logo from '../assets/img/reactlogo.png';
 
-import bgImage from 'assets/img/sidebar-2.jpg';
-import logo from 'assets/img/reactlogo.png';
+import Navbar from '../components/Navbars/Navbar';
+import Footer from '../components/Footer/Footer';
+import Sidebar from '../components/Sidebar/Sidebar';
+
+
 
 let ps;
 
@@ -44,9 +46,7 @@ export default function Admin({ ...rest }) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  const getRoute = () => {
-    return window.location.pathname !== '/admin/maps';
-  };
+  const getRoute = () => window.location.pathname !== '/admin/maps';
   const resizeFunction = () => {
     if (window.innerWidth >= 960) {
       setMobileOpen(false);
