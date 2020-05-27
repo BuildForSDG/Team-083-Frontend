@@ -1,5 +1,5 @@
 {
-  "name": "smeund",
+  "name": "smefund",
   "version": "1.8.0",
   "description": "A software that connects SMEs to investors",
   "private": false,
@@ -50,7 +50,10 @@
     "typescript": "3.5.3"
   },
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "6.0.0",
+    "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "3.1.0",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",

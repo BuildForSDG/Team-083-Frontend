@@ -1,21 +1,21 @@
 module.exports = {
-  parser: "babel-eslint",
   env: {
+    browser: true,
     es6: true,
     node: true,
-    browser: true
+    jest: true
+  },
+  extends: ['airbnb-base'],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly'
   },
   parserOptions: {
-    ecmaVersion: 6,
-    sourceType: "module",
-    ecmaFeatures: {
-      jsx: true
-    }
+    ecmaVersion: 2018,
+    sourceType: 'module'
   },
-  plugins: ["react"],
-  extends: [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended"
-  ]
+  rules: {
+    'comma-dangle': ['error', 'never'],
+    'no-param-reassign': ['error', { props: false }]
+  }
 };
