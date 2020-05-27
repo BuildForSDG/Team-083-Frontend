@@ -1,15 +1,15 @@
 // ##############################
 // // // javascript library for creating charts
 // #############################
-var Chartist = require('chartist');
+const Chartist = require('chartist');
 
 // ##############################
 // // // variables used to create animation on charts
 // #############################
-var delays = 80,
-  durations = 500;
-var delays2 = 80,
-  durations2 = 500;
+const delays = 80;
+const durations = 500;
+const delays2 = 80;
+const durations2 = 500;
 
 // ##############################
 // // // Daily Sales
@@ -35,17 +35,13 @@ const dailySalesChart = {
   },
   // for animation
   animation: {
-    draw: function(data) {
+    draw(data) {
       if (data.type === 'line' || data.type === 'area') {
         data.element.animate({
           d: {
             begin: 600,
             dur: 700,
-            from: data.path
-              .clone()
-              .scale(1, 0)
-              .translate(0, data.chartRect.height())
-              .stringify(),
+            from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
             to: data.path.clone().stringify(),
             easing: Chartist.Svg.Easing.easeOutQuint
           }
@@ -93,7 +89,7 @@ const emailsSubscriptionChart = {
       {
         seriesBarDistance: 5,
         axisX: {
-          labelInterpolationFnc: function(value) {
+          labelInterpolationFnc(value) {
             return value[0];
           }
         }
@@ -101,7 +97,7 @@ const emailsSubscriptionChart = {
     ]
   ],
   animation: {
-    draw: function(data) {
+    draw(data) {
       if (data.type === 'bar') {
         data.element.animate({
           opacity: {
@@ -140,17 +136,13 @@ const completedTasksChart = {
     }
   },
   animation: {
-    draw: function(data) {
+    draw(data) {
       if (data.type === 'line' || data.type === 'area') {
         data.element.animate({
           d: {
             begin: 600,
             dur: 700,
-            from: data.path
-              .clone()
-              .scale(1, 0)
-              .translate(0, data.chartRect.height())
-              .stringify(),
+            from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
             to: data.path.clone().stringify(),
             easing: Chartist.Svg.Easing.easeOutQuint
           }

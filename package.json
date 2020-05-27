@@ -1,14 +1,14 @@
 {
-  "name": "material-dashboard-react",
+  "name": "smefund",
   "version": "1.8.0",
-  "description": "Material Dashboard React. Coded by Creative Tim",
+  "description": "A software that connects SMEs to investors",
   "private": false,
   "main": "dist/index.js",
   "dependencies": {
     "@material-ui/core": "4.3.2",
     "@material-ui/icons": "4.2.1",
     "chartist": "0.10.1",
-    "classnames": "2.2.6",
+    "classnames": "^2.2.6",
     "history": "4.9.0",
     "perfect-scrollbar": "1.4.0",
     "prop-types": "15.7.2",
@@ -16,6 +16,7 @@
     "react-chartist": "0.13.3",
     "react-dom": "16.9.0",
     "react-google-maps": "9.4.5",
+    "react-icons": "^3.10.0",
     "react-router-dom": "5.0.1",
     "react-scripts": "3.1.0",
     "react-swipeable-views": "0.13.3"
@@ -27,7 +28,9 @@
     "eject": "react-scripts eject",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
     "lint:check": "eslint . --ext=js,jsx;  exit 0",
-    "lint:fix": "eslint . --ext=js,jsx --fix;  exit 0",
+    "test:watch": "jest --watch",
+    "test:cover": "jest --coverage",
+    "lint": "eslint \"src/**/*.js\"",
     "build-package-css": "cp src/assets/css/material-dashboard-react.css dist/material-dashboard-react.css",
     "build-package": "npm run build-package-css && babel src --out-dir dist"
   },
@@ -49,8 +52,12 @@
     "typescript": "3.5.3"
   },
   "devDependencies": {
-    "eslint-config-prettier": "6.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "3.1.0",
+    "eslint-plugin-react": "^7.20.0",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
     "prettier": "1.18.2"

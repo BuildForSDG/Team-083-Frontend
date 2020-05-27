@@ -11,19 +11,20 @@
 * Coded by Creative Tim
 
 =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+* The above copyright notice and this permission notice shall be included in all copies or
+substantial portions of the Software.
 
 */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createBrowserHistory } from 'history';
-import { Router, Route, Switch, Redirect } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 
 // core components
-import Admin from 'layouts/Admin.js';
+import Admin from './layouts/Admin';
+import LandingPage from './views/LandingPage/LandingPage';
 
-import 'assets/css/material-dashboard-react.css?v=1.8.0';
+import './assets/css/material-dashboard-react.css';
 
 const hist = createBrowserHistory();
 
@@ -31,7 +32,8 @@ ReactDOM.render(
   <Router history={hist}>
     <Switch>
       <Route path="/admin" component={Admin} />
-      <Redirect from="/" to="/admin/dashboard" />
+      <Route path="/" component={LandingPage} />
+      <Route to="/admin/dashboard" />
     </Switch>
   </Router>,
   document.getElementById('root')
