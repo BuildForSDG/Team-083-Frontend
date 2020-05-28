@@ -2,7 +2,7 @@ const initialState = {
   width: window.innerWidth,
   height: window.innerHeight,
   bp1: 900,
-  bp2: 768,
+  bp2: 768
 };
 const resizeReducer = (state = initialState, action) => {
   switch (action.type) {
