@@ -8,12 +8,7 @@ const NavBar = () => {
 
   return (
     <Box
-      top="0"
-      left="0"
       paddingBottom="10rem"
-      zIndex="10"
-      position="fixed"
-      width="100%"
       padding="1rem"
       bg="gray.600"
       color="white"
@@ -30,3 +25,9 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+// top="0"
+// left="0"
+// zIndex="10"
+// position="fixed"
+// width="100%"

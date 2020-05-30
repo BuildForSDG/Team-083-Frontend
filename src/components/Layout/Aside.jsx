@@ -58,8 +58,8 @@ const Aside = ({ width, closeButton, onClose }) => {
 };
 
 Aside.propTypes = {
-  width: PropTypes.number,
-  closeButton: PropTypes.object,
+  width: PropTypes.string,
+  closeButton: PropTypes.bool,
   onClose: PropTypes.func
 };
 

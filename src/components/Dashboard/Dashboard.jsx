@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Text } from '@chakra-ui/core';
+import { Flex, Text, Box } from '@chakra-ui/core';
 import SummaryCards from './SummaryCards';
 import IncomeExpenseCharts from './IncomeExpenseCharts';
 import RecentTransactions from './RecentTransactions';
@@ -7,7 +7,7 @@ import TotalExpensePie from './TotalExpensePie';
 
 const Dashboard = () => {
   return (
-    <div>
+    <Box>
       <Flex justify="space-between">
         <Text>Dashboard </Text>
       </Flex>
@@ -15,7 +15,7 @@ const Dashboard = () => {
       <TotalExpensePie />
       <IncomeExpenseCharts />
       <RecentTransactions />
-    </div>
+    </Box>
   );
 };
 

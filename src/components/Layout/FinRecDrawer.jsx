@@ -8,7 +8,7 @@ const FinRecDrawer = ({ isOpen, onClose }) => {
     <Drawer placement={"left"} onClose={onClose} isOpen={isOpen}>
       <DrawerOverlay />
       <DrawerContent>
-        <Aside closeButton onClose = {onClose} width="100%" />
+        <Aside closeButton = {true} onClose = {onClose} width="100%" />
       </DrawerContent>
     </Drawer>
   );

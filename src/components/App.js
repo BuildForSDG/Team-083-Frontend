@@ -1,33 +1,10 @@
 import React from 'react';
-import { Router } from '@reach/router';
-import { ThemeProvider, ColorModeProvider, CSSReset } from '@chakra-ui/core';
-import Layout from './Layout/Layout';
-import Dashboard from './Dashboard/Dashboard';
-import About from './About';
-import Settings from './Settings';
-import NotFound from './NotFound';
-import customTheme from '../utils/theme';
+import UnauthenticatedApp from './views/unauthenticated_app.jsx';
+import AuthenticatedApp from './views/authenticated_app.jsx';
 
-function App() {
-  const MainApp = () => (
-    <Layout>
-      <Router>
-        <Dashboard path="/" />
-        <About path="/about" />
-        <Settings path="/settings" />
-        <NotFound default />
-      </Router>
-    </Layout>
-  );
-
-  return (
-    <ThemeProvider theme={customTheme}>
-      <ColorModeProvider>
-        <CSSReset />
-        <MainApp />
-      </ColorModeProvider>
-    </ThemeProvider>
-  );
-}
+const App = () => {
+  const [user] = React.useState(false);
+  return user ? <AuthenticatedApp /> : <UnauthenticatedApp />;
+};
 
 export default App;

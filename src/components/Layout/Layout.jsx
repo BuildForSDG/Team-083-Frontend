@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
       {width < bp2 ? (
         <>
           <NavBar />
-          <Box height="50px"></Box>
+
           <Box background={myBgColor[colorMode]} padding="1rem">
             {children}
           </Box>
@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.func
+  children: PropTypes.object
 };
 
 export default Layout;
