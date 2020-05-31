@@ -1,0 +1,62 @@
+.mt-6 {
+  margin-top: 2rem;
+}
+.signup-form {
+  margin: 0 1em;
+}
+.signup-form-cont {
+  width: 600px;
+  margin: 2rem auto;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-header h3 {
+  margin: auto 0;
+}
+
+.register-as input[type='button'] {
+  margin: 0 10px;
+}
+
+.error-message {
+  color: red;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-sb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.password-input {
+  border: none !important;
+  background: none !important;
+}
+
+.input-icon-cont {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.075);
+  border-radius: 4px;
+}
+
+
+@media (max-width: 600px) {
+  .signup-form-cont {
+    width: 100%;
+  }
+}

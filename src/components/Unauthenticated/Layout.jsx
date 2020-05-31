@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './css/main.css';
+import { Link } from '@reach/router';
 
 const Layout = ({ children }) => {
   // React.useEffect(() => {
@@ -13,13 +14,13 @@ const Layout = ({ children }) => {
     // <div className="is-preload">
     <div>
       <header id="header">
-        <a className="logo" href="index.html">
+        <Link className="logo" to="/">
           SMEFund
-        </a>
+        </Link>
         <nav>
           <a href="#what-we-do">What we do</a>
-          <a href="./auth/signup">Register</a>
-          <a href="./auth/login">Log In</a>
+          <Link to="/register">Register</Link>
+          <Link to="/login">Log In</Link>
         </nav>
       </header>
 
