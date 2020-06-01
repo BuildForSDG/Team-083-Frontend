@@ -137,19 +137,6 @@ MainForm.propTypes = {
 
 const initialValues = { email: '', password: '' };
 
-// const onsubmit = async (values, { setSubmitting, dispatch }) => {
-//   const response = await logUserIn(values);
-//   if (response) {
-//     setSubmitting(false);
-//     if (typeof response === 'object') {
-//       toast.success('Successful');
-//       dispatch({ type: 'AUTHENTICATE_USER' });
-//     } else {
-//       toast.error(`Error: ${response}`);
-//     }
-//   }
-// };
-
 const Login = () => {
   const dispatch = useDispatch();
 
@@ -159,7 +146,7 @@ const Login = () => {
       setSubmitting(false);
       if (typeof response === 'object') {
         toast.success('Successful');
-        dispatch({ type: 'AUTHENTICATE_USER' });
+        dispatch({ type: 'AUTHENTICATE_USER',  response });
       } else {
         toast.error(`Error: ${response}`);
       }

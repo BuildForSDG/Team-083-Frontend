@@ -21,7 +21,7 @@ const LayoutDrawer = ({ isOpen, close }) => {
     >
       <Flex justifyContent="space-between">
         <Box />
-        <Box onClick={() => close(!isOpen)} width="20px" height="20px" as={FaTimes} />
+        <Box onClick={() => close(!isOpen)} width="14.66px" height="14.66px" as={FaTimes} />
       </Flex>
       <Box alignItems="center" display="flex" flexDirection="column">
         <style>{`a{text-decoration: none}`}</style>

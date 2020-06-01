@@ -1,8 +1,9 @@
 import React from 'react';
+import bg from '../images/cta01.jpg';
 
 const ABetterWorld = () => {
   return (
-    <section id="cta" className="wrapper">
+    <section style={{ backgroundImage: `linear-gradient(rgba(206, 27, 40, 0.25), rgba(206, 27, 40, 0.25)), url(${bg})` }} id="cta" className="wrapper">
       <div className="inner">
         <h2>A better world for SMEs</h2>
         <p>
