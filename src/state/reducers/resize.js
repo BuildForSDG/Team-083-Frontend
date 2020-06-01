@@ -4,6 +4,7 @@ const initialState = {
   bp1: 900,
   bp2: 768
 };
+
 const resize = (state = initialState, action) => {
   switch (action.type) {
     case "UPDATE_WINDOW_SIZE": {
