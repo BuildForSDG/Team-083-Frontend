@@ -8,6 +8,7 @@ import About from '../About';
 import Settings from '../Settings';
 import NotFound from '../NotFound';
 import customTheme from '../../utils/theme';
+import Profile from '../Profile/Profile';
 
 const AuthenticatedApp = () => {
   const MainApp = () => (
@@ -16,6 +17,7 @@ const AuthenticatedApp = () => {
         <Dashboard path="/" />
         <About path="/about" />
         <Settings path="/settings" />
+        <Profile path="/profile" />
         <NotFound default />
       </Router>
     </Layout>
