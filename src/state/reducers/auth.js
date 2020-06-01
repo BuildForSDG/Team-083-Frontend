@@ -1,4 +1,3 @@
-/* eslint-disable no-unneeded-ternary */
 import { navigate } from '@reach/router';
 
 const initialState = {
