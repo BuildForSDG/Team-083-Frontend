@@ -1,17 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './css/main.css';
 import { Link } from '@reach/router';
 import { useSelector } from 'react-redux';
 import { Box } from '@chakra-ui/core';
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaBars, FaTimes } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaBars } from 'react-icons/fa';
 import styles from './css/layout.module.css';
 import LayoutNavLinks from './components/LayoutNavLinks';
 import LayoutDrawer from './components/LayoutDrawer';
+// import './css/main.css';
 
 const Layout = ({ children }) => {
   const { width, bp2 } = useSelector((state) => state.resize);
+  // const { isAuthenticated } = useSelector((state) => state.auth);
   const [isOpen, close] = React.useState(false);
+
+  // eslint-disable-next-line global-require
+  require('./css/main.css');
+  // isAuthenticated ? require('./css/nothing.css') : require('./css/main.css');
 
   return (
     <div>

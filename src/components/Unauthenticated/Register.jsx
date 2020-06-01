@@ -107,8 +107,8 @@ const MainForm = ({ values, errors, touched, handleChange, handleBlur, handleSub
             <div className="row">
               <input
                 id="sme-user-type"
-                value="sme"
-                checked={values.userType === 'sme'}
+                value="SME"
+                checked={values.userType === 'SME'}
                 name="userType"
                 type="radio"
                 onChange={handleChange}
@@ -118,14 +118,14 @@ const MainForm = ({ values, errors, touched, handleChange, handleBlur, handleSub
 
             <div className="row">
               <input
-                id="investor-user-type"
-                value="investor"
+                id="funder-user-type"
+                value="FUNDER"
                 name="userType"
-                checked={values.userType === 'investor'}
+                checked={values.userType === 'FUNDER'}
                 onChange={handleChange}
                 type="radio"
               />
-              <label htmlFor="investor-user-type">Investor</label>
+              <label htmlFor="funder-user-type">Funder</label>
             </div>
             <div className="primary"></div>
           </div>
@@ -199,9 +199,8 @@ const MainForm = ({ values, errors, touched, handleChange, handleBlur, handleSub
             Register
           </button>
         </div>
-        <Box my = "1rem" textAlign = "center">
-          <span>Already have an account?</span>
-          {" "}
+        <Box my="1rem" textAlign="center">
+          <span>Already have an account?</span>{' '}
           <span>
             <Link to="/login">Log in here</Link>
           </span>
@@ -237,7 +236,7 @@ const initialValues = {
   lastname: '',
   email: '',
   password: '',
-  userType: ''
+  userType: 'SME'
 };
 
 const onsubmit = async (values, { setSubmitting }) => {

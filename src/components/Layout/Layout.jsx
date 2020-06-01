@@ -6,7 +6,7 @@ import Aside from './Aside';
 import NavBar from './NavBar';
 
 const Layout = ({ children }) => {
-  const { width, bp2 } = useSelector((state) => state.resizeReducer);
+  const { width, bp2 } = useSelector((state) => state.resize);
   const { colorMode } = useColorMode();
 
   const myBgColor = {

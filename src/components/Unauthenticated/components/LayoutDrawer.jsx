@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Flex } from '@chakra-ui/core';
 import { FaTimes } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 import LayoutNavLinks from './LayoutNavLinks';
 
@@ -28,6 +29,11 @@ const LayoutDrawer = ({ isOpen, close }) => {
       </Box>
     </Box>
   );
+};
+
+LayoutDrawer.propTypes = {
+  isOpen: PropTypes.bool,
+  close: PropTypes.func
 };
 
 export default LayoutDrawer;
