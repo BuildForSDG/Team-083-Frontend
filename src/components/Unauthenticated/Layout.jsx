@@ -7,11 +7,11 @@ import { Box } from '@chakra-ui/core';
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaBars, FaTimes } from 'react-icons/fa';
 import styles from './css/layout.module.css';
 import LayoutNavLinks from './components/LayoutNavLinks';
-// import LayoutDrawer from './components/LayoutDrawer';
+import LayoutDrawer from './components/LayoutDrawer';
 
 const Layout = ({ children }) => {
-
   const { width, bp2 } = useSelector((state) => state.resize);
+  const [isOpen, close] = React.useState(false);
 
   return (
     <div>
@@ -19,13 +19,13 @@ const Layout = ({ children }) => {
         <Link className="logo" to="/">
           SMEFund
         </Link>
-        {/* <LayoutDrawer  /> */}
+        {isOpen ? <LayoutDrawer isOpen={isOpen} close={close} /> : ''}
         {width >= bp2 ? (
           <nav>
             <LayoutNavLinks />
           </nav>
         ) : (
-          <Box mx="2rem" as={FaBars} />
+          <Box onClick={() => close(!isOpen)} mx="2rem" as={FaBars} />
         )}
       </header>
 
@@ -92,8 +92,6 @@ Layout.propTypes = {
 };
 
 export default Layout;
-
-
 
 // React.useEffect(() => {
 //   setTimeout(() => {
