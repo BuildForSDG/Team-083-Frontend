@@ -1,5 +1,5 @@
 const initialState = {};
-const dashboardReducer = (state = initialState, action) => {
+const dashboard = (state = initialState, action) => {
   switch (action.type) {
     default: {
       return state;
@@ -7,4 +7,4 @@ const dashboardReducer = (state = initialState, action) => {
   }
 };
 
-export default dashboardReducer;
+export default dashboard;

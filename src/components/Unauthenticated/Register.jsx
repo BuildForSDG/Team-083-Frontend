@@ -258,7 +258,7 @@ const onsubmit = async (values, { setSubmitting }) => {
   }
 };
 
-const Signup = () => {
+const Register = () => {
   return (
     <Formik initialValues={initialValues} validate={validate} onSubmit={onsubmit}>
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
@@ -276,4 +276,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Register;

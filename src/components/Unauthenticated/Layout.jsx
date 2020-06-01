@@ -2,26 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './css/main.css';
 import { Link } from '@reach/router';
+import { useSelector } from 'react-redux';
+import { Box } from '@chakra-ui/core';
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaBars, FaTimes } from 'react-icons/fa';
+import styles from './css/layout.module.css';
+import LayoutNavLinks from './components/LayoutNavLinks';
+// import LayoutDrawer from './components/LayoutDrawer';
 
 const Layout = ({ children }) => {
-  // React.useEffect(() => {
-  //   setTimeout(() => {
-  //     document.querySelector('body').classList.remove('is-preload');
-  //   }, 100);
-  // }, []);
+
+  const { width, bp2 } = useSelector((state) => state.resize);
 
   return (
-    // <div className="is-preload">
     <div>
       <header id="header">
         <Link className="logo" to="/">
           SMEFund
         </Link>
-        <nav>
-          <a href="#what-we-do">What we do</a>
-          <Link to="/register">Register</Link>
-          <Link to="/login">Log In</Link>
-        </nav>
+        {/* <LayoutDrawer  /> */}
+        {width >= bp2 ? (
+          <nav>
+            <LayoutNavLinks />
+          </nav>
+        ) : (
+          <Box mx="2rem" as={FaBars} />
+        )}
       </header>
 
       {children}
@@ -51,23 +56,23 @@ const Layout = ({ children }) => {
               <h4>Connect with us</h4>
               <ul className="plain">
                 <li>
-                  <a href="/">
-                    <i className="icon fa-twitter">&nbsp;</i>Twitter
+                  <a className={styles.social_links} href="/">
+                    <Box as={FaTwitter} /> <span>Twitter</span>
                   </a>
                 </li>
                 <li>
-                  <a href="/">
-                    <i className="icon fa-facebook">&nbsp;</i>Facebook
+                  <a className={styles.social_links} href="/">
+                    <Box as={FaFacebook} /> <span>Facebook</span>
                   </a>
                 </li>
                 <li>
-                  <a href="/">
-                    <i className="icon fa-instagram">&nbsp;</i>Instagram
+                  <a className={styles.social_links} href="/">
+                    <Box as={FaLinkedin} /> <span>LinkedIn</span>
                   </a>
                 </li>
                 <li>
-                  <a href="/">
-                    <i className="icon fa-linkedin">&nbsp;</i>LinkendIn
+                  <a className={styles.social_links} href="/">
+                    <Box as={FaInstagram} /> <span>Instagram</span>
                   </a>
                 </li>
               </ul>
@@ -87,3 +92,13 @@ Layout.propTypes = {
 };
 
 export default Layout;
+
+
+
+// React.useEffect(() => {
+//   setTimeout(() => {
+//     document.querySelector('body').classList.remove('is-preload');
+//   }, 100);
+// }, []);
+
+// <div className="is-preload">
