@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from '@reach/router';
 import { Box } from '@chakra-ui/core';
+import { useDispatch } from 'react-redux';
 
 const logUserIn = async (details) => {
   const client = axios.create();
@@ -36,6 +37,7 @@ const logUserIn = async (details) => {
   }
   return response;
 };
+
 const validate = (values) => {
   const errors = {};
   const check = (fields) => {
@@ -135,19 +137,22 @@ MainForm.propTypes = {
 
 const initialValues = { email: '', password: '' };
 
-const onsubmit = async (values, { setSubmitting }) => {
-  const response = await logUserIn(values);
-  if (response) {
-    setSubmitting(false);
-    if (typeof response === 'object') {
-      toast.success('Successful');
-    } else {
-      toast.error(`Error: ${response}`);
-    }
-  }
-};
-
 const Login = () => {
+  const dispatch = useDispatch();
+
+  const onsubmit = async (values, { setSubmitting }) => {
+    const response = await logUserIn(values);
+    if (response) {
+      setSubmitting(false);
+      if (typeof response === 'object') {
+        toast.success('Successful');
+        dispatch({ type: 'AUTHENTICATE_USER',  response });
+      } else {
+        toast.error(`Error: ${response}`);
+      }
+    }
+  };
+
   return (
     <Formik initialValues={initialValues} validate={validate} onSubmit={onsubmit}>
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (

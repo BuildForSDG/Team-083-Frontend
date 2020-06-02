@@ -1,0 +1,8 @@
+.social_links {
+  display: grid;
+  justify-content: start;
+  align-items: center;
+  grid-template-columns: 1fr 5fr;
+  column-gap: 10px;
+  width: 100px;
+}
