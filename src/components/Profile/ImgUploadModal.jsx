@@ -10,17 +10,21 @@ import {
   ModalContent,
   ModalOverlay,
   Modal,
-  Box
+  Box,
+  Flex
 } from '@chakra-ui/core';
 import DragAndDrop from './DragAndDrop';
+import uploadPhoto from '../../http/upload_photo';
 
 const ImgUploadModal = ({ isOpen, onClose }) => {
-  const [dragging, setDragging] = React.useState(false);
   const [message, setMessage] = React.useState('Drag and drop file here');
-  const handleDrop = (file) => {
-    console.log(file[0].name);
+  const [file, setFile] = React.useState();
+
+  const uploadImg = () => {
+    const data = new FormData();
+    data.append('profilePhoto', this.state.selectedFile);
+    uploadPhoto(data);
   };
-  let dragCounter = 0;
 
   return (
     <>
@@ -30,23 +34,30 @@ const ImgUploadModal = ({ isOpen, onClose }) => {
           <ModalHeader>Upload new profile picture</ModalHeader>
           <ModalCloseButton />
           <ModalBody textAlign="center">
-            <form action="">
-              <DragAndDrop
-                dragCounter={dragCounter}
-                dragging={dragging}
-                setDragging={setDragging}
-                setMessage={setMessage}
-                handleDrop={handleDrop}
-              >
+            <form onSubmit={uploadImg}>
+              <DragAndDrop setMessage={setMessage} setFile={setFile}>
                 {
                   <Box my="2rem" py="2rem" border="1px dashed gray">
                     {message}
                   </Box>
                 }
-                <Button variantColor="blue" mr={3} onClick={() => setDragging(false)}>
-                  Or Select Select file
-                </Button>
               </DragAndDrop>
+              <Flex justify="center" alignItems="center">
+                <label>
+                  <p>Or Select directly</p>
+                  <input onChange={(e) => setFile(e.target.files[0])} type="file" />
+                </label>
+              </Flex>
+
+              <Button
+                isloading="false"
+                loadingText="Uploading"
+                mt="2rem"
+                variantColor="blue"
+                isDisabled={file === undefined}
+              >
+                Upload
+              </Button>
             </form>
           </ModalBody>
 

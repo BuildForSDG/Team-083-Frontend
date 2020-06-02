@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const uploadPhoto = async (details) => {
+const uploadPhoto = async (data) => {
   const client = axios.create();
 
   client.interceptors.response.use(
@@ -16,7 +16,7 @@ const uploadPhoto = async (details) => {
       method: 'post',
       url: 'https://smefundapi.herokuapp.com/api/v1/user/avatar',
       timeout: 30000,
-      data: details,
+      data,
       headers: {
         'Content-Type': 'multipart/form-data'
       }

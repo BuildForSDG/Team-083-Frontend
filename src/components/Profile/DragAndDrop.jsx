@@ -15,8 +15,9 @@ class DragAndDrop extends React.Component {
     this.dragCounter += 1;
     if (e.dataTransfer.items) {
       if (e.dataTransfer.items.length === 1) {
-        this.props.setDragging(true);
         this.props.setMessage('Drop now!');
+      } else {
+        this.props.setMessage('Attempting to drop multiple files');
       }
     }
   };
@@ -25,28 +26,21 @@ class DragAndDrop extends React.Component {
     e.preventDefault();
     e.stopPropagation();
     this.dragCounter -= 1;
-    console.log(this.dragCounter);
-
-    if (this.dragCounter === 0) {
-      this.props.setDragging(false);
-      this.props.setMessage('Drag and drop file here');
-    }
+    this.props.setMessage('Drag and drop file here');
   };
 
   handleDrop = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    this.props.setDragging(false);
     if (e.dataTransfer.files) {
       if (e.dataTransfer.files.length === 1) {
-        this.props.handleDrop(e.dataTransfer.files);
+        this.props.setFile(e.dataTransfer.files[0]);
         e.dataTransfer.clearData();
         this.dragCounter = 0;
-        this.props.setMessage('Drag and drop file here');
-        this.props.setDragging(false);
+        this.props.setMessage(e.dataTransfer.files[0].name);
       } else if (e.dataTransfer.files.length > 1) {
-        this.props.setMessage('attempting to drop multiple files');
-        this.props.setDragging(false);
+        this.props.setMessage('Drag and drop file here');
+        this.dragCounter = 0;
       }
     }
   };
@@ -69,20 +63,14 @@ class DragAndDrop extends React.Component {
   }
 
   render() {
-    return (
-      <div ref={this.dropRef}>
-        {/* {this.state.dragging} */}
-        {this.props.children}
-      </div>
-    );
+    return <div ref={this.dropRef}>{this.props.children}</div>;
   }
 }
 
 DragAndDrop.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.object,
   dragCounter: PropTypes.number,
-  handleDrop: PropTypes.func,
-  setDragging: PropTypes.func,
+  setFile: PropTypes.func,
   setMessage: PropTypes.func
 };
 
