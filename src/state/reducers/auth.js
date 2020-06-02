@@ -13,16 +13,15 @@ const auth = (state = initialState, action) => {
       return { ...state, isAuthenticated: true };
     }
     case 'FETCH_USER_DETAILS': {
-      let userDetails;
       const fetchUser = async () => {
         new Promise((resolve) => {
           resolve(getUserDetails());
         }).then((res) => {
-          userDetails = res;
+          localStorage.setItem('smefund-user-details', JSON.stringify(res));
         });
       };
       fetchUser();
-      return { ...state, user: userDetails };
+      return state;
     }
     case 'GET_USER_DETAILS': {
       return { ...state, user: action.user };

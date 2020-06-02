@@ -1,32 +1,27 @@
 import React from 'react';
-import { Box, Avatar, Flex, Text } from '@chakra-ui/core';
-import { FaSignOutAlt } from 'react-icons/fa';
+import { Box, Flex, Text } from '@chakra-ui/core';
+import { FaSignOutAlt, FaNode } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 
 import signOut from '../../http/sign_out';
+import ImageAndStats from './ImageAndStats';
+import DataTable from './DataTable';
 
 const Profile = () => {
-  // const { name } = JSON.parse(localStorage.getItem('smefund-user'));
-  const { name } = useSelector((state) => state.auth);
-  console.log(name)
+  const { width, bp1 } = useSelector((state) => state.resize);
+
   return (
     <Box>
-      <Box
-        bgPos="center"
-        bgRepeat="no-repeat"
-        height="200px"
-        backgroundImage="url(../../images/milky_way.jpg)"
-        backgroundColor="red"
-        top="0"
-        left="0"
-        position="absolute"
-      ></Box>
-      <Box marginTop="100px"></Box>
-      <Flex height="200px" direction="column" justifyContent="space-evenly" align="center">
-        <Avatar size="2xl" name={name} />
-        <Text fontSize="lg">{name}</Text>
+      <Flex justify="space-between">
+        <Text fontSize="2xl">User Profile</Text>
+        <Box as={FaNode} />
       </Flex>
-      <Box height="300px"></Box>
+
+      <Flex direction={width <= bp1 ? 'column' : 'row'} my="5rem" justify="space-around">
+        <DataTable />
+        {width <= bp1 ? <Box h="5rem" /> : ''}
+        <ImageAndStats />
+      </Flex>
 
       <Flex onClick={signOut} cursor="pointer" alignItems="center" justifyContent="flex-end">
         <Text>Sign out</Text>
