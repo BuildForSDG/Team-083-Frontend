@@ -20,6 +20,7 @@ const ProfileHead = () => {
       p="1rem"
       borderColor="#ce1b28"
       zIndex="2"
+      marginBottom="-5rem"
     >
       <Heading color="#fff" fontWeight="50" size="md">
         Edit Profile
@@ -46,7 +47,7 @@ const ProfileForm = () => {
       rowGap="2rem"
       mt="1rem"
     >
-      <Grid columnGap="2rem"  templateColumns={width >= bp2 ? '1fr 1fr' : '1fr'}>
+      <Grid columnGap="2rem" templateColumns={width >= bp2 ? '1fr 1fr' : '1fr'}>
         <Input variant="flushed" placeholder="Name" />
         <Input variant="flushed" placeholder="Email" />
       </Grid>
