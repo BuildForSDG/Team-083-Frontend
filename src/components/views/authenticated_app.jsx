@@ -7,6 +7,8 @@ import Dashboard from '../Dashboard/Dashboard';
 import About from '../About';
 import Settings from '../Settings';
 import NotFound from '../NotFound';
+import RequestFunds from '../RequestFunds/RequestFunds';
+import Investors from '../Investors';
 import customTheme from '../../utils/theme';
 import Profile from '../Profile/Profile';
 
@@ -17,6 +19,8 @@ const AuthenticatedApp = () => {
         <Dashboard path="/" />
         <About path="/about" />
         <Settings path="/settings" />
+        <Investors path="/investors" />
+        <RequestFunds path="/request-funds" />
         <Profile path="/profile" />
         <NotFound default />
       </Router>

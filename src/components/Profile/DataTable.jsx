@@ -1,15 +1,20 @@
 import React from 'react';
-import { Heading, Text, Flex, Grid, Input } from '@chakra-ui/core';
+import { Heading, Text, Flex, Grid, Input, useTheme, Button } from '@chakra-ui/core';
 import { useSelector } from 'react-redux';
 
 const ProfileHead = () => {
   const [profileComplete] = React.useState(false);
   const { width, bp1 } = useSelector((state) => state.resize);
+  const theme = useTheme();
+
+  const {
+    colors: { primary }
+  } = theme;
 
   return (
     <Flex
       mb="-40.5px"
-      bg="#ce1b28"
+      bg={primary}
       w={width >= bp1 ? `${width - 600}px` : '90%'}
       h="84px"
       shadow="md"
@@ -18,7 +23,7 @@ const ProfileHead = () => {
       rounded="md"
       direction="column"
       p="1rem"
-      borderColor="#ce1b28"
+      borderColor={primary}
       zIndex="2"
       marginBottom="-5rem"
     >
@@ -32,12 +37,17 @@ const ProfileHead = () => {
 
 const ProfileForm = () => {
   const { width, bp1, bp2 } = useSelector((state) => state.resize);
+  const theme = useTheme();
+
+  const {
+    colors: { primary }
+  } = theme;
 
   return (
     <Grid
       p="2rem"
       bg="white"
-      pt="40.5px"
+      pt="100.5px"
       borderTop="none"
       shadow="md"
       borderWidth="1px"
@@ -53,6 +63,9 @@ const ProfileForm = () => {
       </Grid>
 
       <Input variant="flushed" placeholder="User Type" />
+      <Button width="100px" mt={4} backgroundColor={primary} color="white" type="submit">
+        Request
+      </Button>
     </Grid>
   );
 };
