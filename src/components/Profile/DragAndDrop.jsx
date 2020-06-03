@@ -15,7 +15,11 @@ class DragAndDrop extends React.Component {
     this.dragCounter += 1;
     if (e.dataTransfer.items) {
       if (e.dataTransfer.items.length === 1) {
-        this.props.setMessage('Drop now!');
+        if (this.types.includes(e.dataTransfer.items[0].type)) {
+          this.props.setMessage('Drop now!');
+        } else {
+          this.props.setMessage(`${e.dataTransfer.items[0].type} is not supported`);
+        }
       } else {
         this.props.setMessage('Attempting to drop multiple files');
       }
@@ -34,10 +38,20 @@ class DragAndDrop extends React.Component {
     e.stopPropagation();
     if (e.dataTransfer.files) {
       if (e.dataTransfer.files.length === 1) {
-        this.props.setFile(e.dataTransfer.files[0]);
-        e.dataTransfer.clearData();
-        this.dragCounter = 0;
-        this.props.setMessage(e.dataTransfer.files[0].name);
+        if (this.types.includes(e.dataTransfer.files[0].type)) {
+          if (e.dataTransfer.files[0].size < 1024 * 1024) {
+            this.props.setFile(e.dataTransfer.files[0]);
+            e.dataTransfer.clearData();
+            this.dragCounter = 0;
+            this.props.setMessage(e.dataTransfer.files[0].name);
+          } else {
+            this.dragCounter = 0;
+            this.props.setMessage("File is too large");
+          }
+        } else {
+          this.dragCounter = 0;
+          this.props.setMessage('Drag and drop file here');
+        }
       } else if (e.dataTransfer.files.length > 1) {
         this.props.setMessage('Drag and drop file here');
         this.dragCounter = 0;
@@ -47,6 +61,8 @@ class DragAndDrop extends React.Component {
 
   componentDidMount() {
     this.dragCounter = 0;
+    this.types = ['image/png', 'image/jpeg', 'image/gif'];
+
     const div = this.dropRef.current;
     div.addEventListener('dragenter', this.handleDragIn);
     div.addEventListener('dragleave', this.handleDragOut);

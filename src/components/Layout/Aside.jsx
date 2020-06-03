@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Box, Flex, Text, LightMode, CloseButton } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 
-import { FaUser, FaTachometerAlt } from 'react-icons/fa';
+import { FaUser, FaTachometerAlt, FaMoneyBill, FaPeopleCarry, FaUsers } from 'react-icons/fa';
 import { Link } from '@reach/router';
 // import bg from '../../images/sidebar-2.jpg';
 
@@ -47,6 +47,8 @@ const Aside = ({ width, closeButton, onClose }) => {
       <Flex padding="1rem" height="200px" alignItems="start" justifyContent="space-evenly" direction="column">
         <AsideButton link="/" icon={FaTachometerAlt} value="Dashboard" isActive={false} />
         <AsideButton link="/profile" icon={FaUser} value="Profile" isActive={true} />
+        <AsideButton link="/investors" icon={FaUsers} value="Investors" isActive={false} />
+        <AsideButton link="/request-funds" icon={FaMoneyBill} value="Request funds" isActive={false} />
       </Flex>
     </Box>
   );
