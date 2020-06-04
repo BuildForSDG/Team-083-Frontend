@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Formik, Field } from 'formik';
 import {
@@ -26,16 +27,19 @@ const FundsRequestForm = () => {
     } else if (value.length > 30) {
       return 'Description is too long';
     }
+    return '';
   };
   const validateAmount = (value) => {
     if (!value) {
       return 'Amount is required';
     }
+    return '';
   };
   const validateMilestone = (value) => {
     if (!value) {
       return 'Milestone is required';
     }
+    return '';
   };
 
   const { width, bp1 } = useSelector((state) => state.resize);
@@ -62,7 +66,6 @@ const FundsRequestForm = () => {
         }}
       >
         {(props) => (
-          <form onSubmit={props.handleSubmit}>
             <Grid
               p="2rem"
               bg="white"
@@ -109,11 +112,18 @@ const FundsRequestForm = () => {
                   </FormControl>
                 )}
               </Field>
-              <Button width="100px" mt={4} backgroundColor={primary} color="white" isLoading={props.isSubmitting} type="submit">
+              <Button
+                width="100px"
+                mt={4}
+                backgroundColor={primary}
+                color="white"
+                isLoading={props.isSubmitting}
+                type="submit"
+                onClick={props.handleSubmit}
+              >
                 Request
               </Button>
             </Grid>
-          </form>
         )}
       </Formik>
       <ToastContainer

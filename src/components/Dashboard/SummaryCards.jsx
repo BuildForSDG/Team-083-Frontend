@@ -21,7 +21,8 @@ const InfoCard = ({ name, value, color }) => {
       rounded="lg"
       bg={myBgColor[colorMode]}
       direction="column"
-      boxShadow=" 0px 0px 50px -19px rgba(79,79,79,0.3);"
+      shadow="sm"
+
     >
       <Text color={color} fontSize="24px">
         {value}

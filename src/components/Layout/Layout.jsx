@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import Aside from './Aside';
 import NavBar from './NavBar';
+import Footer from './Footer';
 
 const Layout = ({ children }) => {
   const { width, bp2 } = useSelector((state) => state.resize);
@@ -21,14 +22,16 @@ const Layout = ({ children }) => {
           <NavBar />
 
           <Box background={myBgColor[colorMode]} padding="1rem">
-            {children}
+            <Box>{children}</Box>
+            {width > 700 && <Footer />}
           </Box>
         </>
       ) : (
         <>
           <Aside />
           <Box background={myBgColor[colorMode]} height="100%" marginLeft="200px" padding="1rem">
-            {children}
+            <Box>{children}</Box>
+            <Footer />
           </Box>
         </>
       )}

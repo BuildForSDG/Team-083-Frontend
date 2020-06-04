@@ -15,7 +15,7 @@ const Dashboard = () => {
   return (
     <Box>
       <Flex justify="space-between">
-        <Text>Dashboard </Text>
+        <Text fontSize="2xl">Dashboard </Text>
       </Flex>
       <SummaryCards />
       <TotalExpensePie />

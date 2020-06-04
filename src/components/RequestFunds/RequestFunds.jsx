@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Heading, Text, Flex, Grid, useTheme } from '@chakra-ui/core';
+import { Heading, Text, Flex, Grid, useTheme, Box } from '@chakra-ui/core';
 import { useSelector } from 'react-redux';
 import FundsRequestForm from './FundsRequestForm';
 
@@ -17,13 +17,12 @@ const ProfileHead = () => {
       mb="-40.5px"
       bg={primary}
       w={width >= bp1 ? `${width - 600}px` : '90%'}
-      h="84px"
       shadow="md"
       borderWidth="1px"
       flex="1"
       rounded="md"
-      direction="column"
-      p="1rem"
+
+      p="1.2rem 1rem"
       borderColor={primary}
       zIndex="2"
       marginBottom="-3rem"
@@ -31,18 +30,23 @@ const ProfileHead = () => {
       <Heading color="#fff" fontWeight="50" size="md">
         Request for funds
       </Heading>
-      <Text color="#eee">How much do you need?</Text>
     </Flex>
   );
 };
 
-
 const RequestFunds = () => {
   return (
-    <Grid justifyItems="center" rowGap="-5">
-      <ProfileHead />
-      <FundsRequestForm />
-    </Grid>
+    <>
+      <Flex justify="space-between">
+        <Text fontSize="2xl">Request funds</Text>
+        <Box />
+      </Flex>
+      <Box h="50px" w="100%" />
+      <Grid justifyItems="center" rowGap="-5">
+        <ProfileHead />
+        <FundsRequestForm />
+      </Grid>
+    </>
   );
 };
 
