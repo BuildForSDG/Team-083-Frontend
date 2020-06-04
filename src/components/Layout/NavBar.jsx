@@ -12,6 +12,9 @@ const NavBar = () => {
       padding="1rem"
       bg="gray.600"
       color="white"
+      position="fixed"
+      w="100%"
+      zIndex="5"
     >
       <Flex align="center">
         <Box onClick={onOpen} as={FaBars}></Box>

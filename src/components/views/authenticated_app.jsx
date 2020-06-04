@@ -12,17 +12,24 @@ import Funders from '../Funders/Funders';
 import customTheme from '../../utils/theme';
 import Profile from '../Profile/Profile';
 
+const ScrollToTop = ({ children, location }) => {
+  React.useEffect(() => window.scrollTo(0, 0), [location.pathname]);
+  return children;
+};
+
 const AuthenticatedApp = () => {
   const MainApp = () => (
     <Layout>
       <Router>
-        <Dashboard path="/" />
-        <About path="/about" />
-        <Settings path="/settings" />
-        <Funders path="/funders" />
-        <RequestFunds path="/request-funds" />
-        <Profile path="/profile" />
-        <NotFound default />
+        <ScrollToTop path="/">
+          <Dashboard path="/" />
+          <About path="/about" />
+          <Settings path="/settings" />
+          <Funders path="/funders" />
+          <RequestFunds path="/request-funds" />
+          <Profile path="/profile" />
+          <NotFound default />
+        </ScrollToTop>
       </Router>
     </Layout>
   );
