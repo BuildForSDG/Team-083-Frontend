@@ -22,6 +22,4 @@ const UnauthenticatedApp = () => {
   );
 };
 
-
-// {UnauthenticatedApp;}
-export default <p> hello </p>;
+export default UnauthenticatedApp;
