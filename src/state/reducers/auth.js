@@ -1,5 +1,5 @@
 import { navigate } from '@reach/router';
-import getUserDetails from '../../http/get_user_details';
+import getUserDetails from '../../views/Authenticated/http/get_user_details';
 
 const initialState = {
   isAuthenticated: localStorage.getItem('smefund-user'),

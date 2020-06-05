@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading, Text, Flex, Grid, Input, useTheme, Button } from '@chakra-ui/core';
+import { Heading, Text, Flex, Grid, Input, useTheme, Button, useColorMode } from '@chakra-ui/core';
 import { useSelector } from 'react-redux';
 
 const ProfileHead = () => {
@@ -38,7 +38,7 @@ const ProfileHead = () => {
 const ProfileForm = () => {
   const { width, bp1, bp2 } = useSelector((state) => state.resize);
   const theme = useTheme();
-
+  const { colorMode } = useColorMode();
   const {
     colors: { primary }
   } = theme;
@@ -46,7 +46,7 @@ const ProfileForm = () => {
   return (
     <Grid
       p="2rem"
-      bg="white"
+      bg={colorMode === 'light' ? 'white' : 'gray.700'}
       pt="100.5px"
       borderTop="none"
       shadow="md"

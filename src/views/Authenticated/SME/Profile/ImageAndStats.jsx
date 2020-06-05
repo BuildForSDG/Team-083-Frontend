@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Text, Grid, Box, useDisclosure } from '@chakra-ui/core';
+import { Avatar, Text, Grid, Box, useDisclosure, useColorMode } from '@chakra-ui/core';
 import { useSelector } from 'react-redux';
 import { FaCamera } from 'react-icons/fa';
 import ImgUploadModal from './ImgUploadModal';
@@ -8,6 +8,7 @@ const ImageAndStats = () => {
   const { width, bp1 } = useSelector((state) => state.resize);
   const { name } = useSelector((state) => state.auth);
   const { onOpen, isOpen, onClose } = useDisclosure();
+  const { colorMode } = useColorMode();
 
   return (
     <Grid margin="0 auto" h="300px" w={width <= bp1 ? '100%' : '300px'} justifyItems="center" rowGap="-10">
@@ -30,7 +31,7 @@ const ImageAndStats = () => {
       <Grid
         direction="column"
         pt="100px"
-        bg="white"
+        bg={colorMode === 'light' ? 'white' : 'gray.700'}
         borderTop="none"
         shadow="md"
         borderWidth="1px"

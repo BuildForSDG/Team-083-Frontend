@@ -1,12 +1,12 @@
 import React from 'react';
 import { Router } from '@reach/router';
 
-import Layout from '../Unauthenticated/Layout';
-import Index from '../Unauthenticated/Index';
-import Register from '../Unauthenticated/Register';
-import Login from '../Unauthenticated/Login';
-import PasswordReset from '../Unauthenticated/PasswordReset';
-import NotFound from '../Unauthenticated/NotFound';
+import Layout from './Unauthenticated/Layout';
+import Index from './Unauthenticated/Index';
+import Register from './Unauthenticated/Register';
+import Login from './Unauthenticated/Login';
+import PasswordReset from './Unauthenticated/PasswordReset';
+import NotFound from './Unauthenticated/NotFound';
 
 const ScrollToTop = ({ children, location }) => {
   React.useEffect(() => window.scrollTo(0, 0), [location.pathname]);

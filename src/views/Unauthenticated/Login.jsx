@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from '@reach/router';
 import { Box } from '@chakra-ui/core';
 import { useDispatch } from 'react-redux';
-import logUserIn from '../../http/log_in';
+import logUserIn from './http/log_in';
 
 
 const validate = (values) => {
