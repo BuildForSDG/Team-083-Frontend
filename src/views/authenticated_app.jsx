@@ -3,13 +3,17 @@ import { ThemeProvider, ColorModeProvider, CSSReset } from '@chakra-ui/core';
 import { Router } from '@reach/router';
 
 import Layout from './Authenticated/Components/Layout/Layout';
-import SMEDashboard from './Authenticated/SME/Dashboard/Dashboard';
 import Settings from './Authenticated/Components/Settings';
 import NotFound from './Authenticated/Components/NotFound';
 
+import SMEDashboard from './Authenticated/SME/Dashboard/Dashboard';
 import RequestFunds from './Authenticated/SME/RequestFunds/RequestFunds';
 import Funders from './Authenticated/SME/Funders/Funders';
-import Profile from './Authenticated/SME/Profile/Profile';
+import SMEProfile from './Authenticated/SME/Profile/Profile';
+
+import FunderDashboard from './Authenticated/Funder/Dashboard/Dashboard';
+import SMEs from './Authenticated/Funder/SMEs/SMEs';
+import FunderProfile from './Authenticated/Funder/Profile/Profile';
 
 import customTheme from './utils/theme';
 import { get } from './utils/easy-storage';
@@ -30,13 +34,15 @@ const AuthenticatedApp = () => {
               <SMEDashboard path="/" />
               <Funders path="/funders" />
               <RequestFunds path="/request-funds" />
-              <Profile path="/profile" />
+              <SMEProfile path="/profile" />
               <Settings path="/settings" />
             </>
           )}
           {userType === 'FUNDER' && (
             <>
-              {/* <FunderDashboard path="/" /> */}
+              <FunderDashboard path="/" />
+              <SMEs path="/smes" />
+              <FunderProfile path="/profile" />
               <Settings path="/settings" />
             </>
           )}

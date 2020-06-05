@@ -1,7 +1,7 @@
 import React from "react";
 import { Drawer, DrawerOverlay, DrawerContent } from "@chakra-ui/core";
 import PropTypes from 'prop-types';
-import Aside from "./Aside";
+import Aside from "./Aside/Aside";
 
 const FinRecDrawer = ({ isOpen, onClose }) => {
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, useColorMode } from '@chakra-ui/core';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import Aside from './Aside';
+import Aside from './Aside/Aside';
 import NavBar from './NavBar';
 import Footer from './Footer';
 // import get from '../../../../utils/easy-storage';
