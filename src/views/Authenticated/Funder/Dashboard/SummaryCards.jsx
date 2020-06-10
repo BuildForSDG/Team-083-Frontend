@@ -41,10 +41,9 @@ InfoCard.propTypes = {
 const SummaryCards = () => {
   return (
     <Flex width="100%" my="1rem" justifyContent="space-between" flexWrap="wrap">
-      <InfoCard name="Income" value="$20000" color="#4d80f3" />
-      <InfoCard name="Income" value="$20000" color="#fb6d9d" />
-      <InfoCard name="Income" value="$20000" color="#81c868" />
-      <InfoCard name="Income" value="20000" color="#34d3eb" />
+      <InfoCard name="SMEs funded" value="30" color="#4d80f3" />
+      <InfoCard name="SMEs requesting funds" value="200" color="#fb6d9d" />
+      <InfoCard name="Amount invested" value="$2000" color="#81c868" />
     </Flex>
   );
 };

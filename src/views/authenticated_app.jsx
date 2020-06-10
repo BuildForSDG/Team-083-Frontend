@@ -15,6 +15,11 @@ import FunderDashboard from './Authenticated/Funder/Dashboard/Dashboard';
 import SMEs from './Authenticated/Funder/SMEs/SMEs';
 import FunderProfile from './Authenticated/Funder/Profile/Profile';
 
+import AdminDashboard from './Authenticated/Admin/Dashboard/Dashboard';
+import AdminProfile from './Authenticated/Admin/Profile/Profile';
+import AdminSMEs from './Authenticated/Admin/SMEs/SMEs';
+import AdminFunders from './Authenticated/Admin/Funders/Funders';
+
 import customTheme from './utils/theme';
 import { get } from './utils/easy-storage';
 
@@ -35,7 +40,6 @@ const AuthenticatedApp = () => {
               <Funders path="/funders" />
               <RequestFunds path="/request-funds" />
               <SMEProfile path="/profile" />
-              <Settings path="/settings" />
             </>
           )}
           {userType === 'FUNDER' && (
@@ -43,15 +47,17 @@ const AuthenticatedApp = () => {
               <FunderDashboard path="/" />
               <SMEs path="/smes" />
               <FunderProfile path="/profile" />
-              <Settings path="/settings" />
             </>
           )}
           {userType === 'ADMIN' && (
             <>
-              {/* <AdminDashboard path="/" /> */}
-              <Settings path="/settings" />
+              <AdminDashboard path="/" />
+              <AdminProfile path="/profile" />
+              <AdminSMEs path="/smes" />
+              <AdminFunders path="/funders" />
             </>
           )}
+          <Settings path="/settings" />
           <NotFound default />
         </ScrollToTop>
       </Router>

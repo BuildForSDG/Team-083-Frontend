@@ -7,12 +7,11 @@ import DataTable from './DataTable';
 
 const Profile = () => {
   const { width, bp1 } = useSelector((state) => state.resize);
-  const [verified] = React.useState(false);
-
+  
   return (
     <Box>
       <Flex justify="space-between">
-        <Text fontSize="2xl">User Profile {verified || '(Unverified)'} </Text>
+        <Text fontSize="2xl">User Profile </Text>
         <Box />
       </Flex>
 
