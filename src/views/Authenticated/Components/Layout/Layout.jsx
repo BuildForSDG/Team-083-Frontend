@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
     <Box>
       <NavBar />
       <Box background={myBgColor[colorMode]} padding="1rem">
-        <Box>{children}</Box>
+        <Box mt="3rem" h="100vh">{children}</Box>
         {width > 700 && <Footer />}
       </Box>
     </Box>
@@ -31,7 +31,7 @@ const Layout = ({ children }) => {
     <Box>
       <Aside />
       <Box background={myBgColor[colorMode]} height="100%" marginLeft="200px" padding="1rem">
-        <Box>{children}</Box>
+        <Box h="100%">{children}</Box>
         <Footer />
       </Box>
     </Box>

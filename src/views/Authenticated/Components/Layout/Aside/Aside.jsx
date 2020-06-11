@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 import { FaSignOutAlt, FaCog } from 'react-icons/fa';
 import AsideButton from './AsideButton';
 import AsideLinks from './AsideLinks';
+import signOut from '../../../http/sign_out';
 // import bg from '../../images/sidebar-2.jpg';
+
 
 const Aside = ({ width, closeButton, onClose }) => {
   const [activeButton, setActiveButton] = React.useState(window.location.pathname);
@@ -43,7 +45,7 @@ const Aside = ({ width, closeButton, onClose }) => {
             isActive={activeButton}
             setActiveButton={setActiveButton}
           />
-          <Grid cursor="pointer" rounded="md" p="10px" alignContent="center" templateColumns="1fr 4fr">
+          <Grid onClick={() => signOut()} cursor="pointer" rounded="md" p="10px" alignContent="center" templateColumns="1fr 4fr">
             <Box color="gray.600" w="20px" h="20px" alignSelf="center" as={FaSignOutAlt} />
             <Text>Sign out</Text>
           </Grid>

@@ -7,12 +7,11 @@ import DataTable from './DataTable';
 
 const Profile = () => {
   const { width, bp1 } = useSelector((state) => state.resize);
-  
+
   return (
-    <Box>
+    <Box >
       <Flex justify="space-between">
         <Text fontSize="2xl">User Profile </Text>
-        <Box />
       </Flex>
 
       <Flex direction={width <= bp1 ? 'column' : 'row'} my="5rem" justify="space-around">

@@ -8,7 +8,7 @@ import { Link } from '@reach/router';
 import { Box } from '@chakra-ui/core';
 import { useDispatch } from 'react-redux';
 import logUserIn from './http/log_in';
-
+import getUserDetails from '../Authenticated/http/get_user_details';
 
 const validate = (values) => {
   const errors = {};
@@ -117,8 +117,12 @@ const Login = () => {
     if (response) {
       setSubmitting(false);
       if (typeof response === 'object') {
-        toast.success('Successful');
-        dispatch({ type: 'AUTHENTICATE_USER',  response });
+        (async () => {
+          const { _id: id, token } = response.data.data;
+          const userDetails = await getUserDetails(id, token);
+          toast.success('Successful');
+          dispatch({ type: 'AUTHENTICATE_USER', response, userDetails });
+        })()
       } else {
         toast.error(`Error: ${response}`);
       }

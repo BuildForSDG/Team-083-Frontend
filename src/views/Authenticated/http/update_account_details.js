@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { get } from '../../utils/easy-storage';
 
-const getUserDetails = async (id, token) => {
-  // const { _id, token } = JSON.parse(localStorage.getItem('smefund-user'));
+const updateAccountDetails = async (data) => {
+  const token = get('token');
   const client = axios.create();
 
   client.interceptors.response.use(
@@ -10,18 +11,19 @@ const getUserDetails = async (id, token) => {
       throw new Error(err.response.data.message);
     }
   );
-
+  
   let response;
   try {
     const options = {
-      method: 'get',
-      url: `https://smefundapi.herokuapp.com/api/v1/user/${id}`,
+      method: 'patch',
+      url: `https://smefundapi.herokuapp.com/api/v1/user/update`,
       timeout: 30000,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json;charset=UTF-8',
         token
-      }
+      },
+      body: data
     };
     response = await client(options);
   } catch (error) {
@@ -30,5 +32,4 @@ const getUserDetails = async (id, token) => {
   return response;
 };
 
-export default getUserDetails;
-
+export default updateAccountDetails;

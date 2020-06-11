@@ -1,7 +1,7 @@
 import axios from 'axios';
+import { get } from '../../utils/easy-storage';
 
-const getUserDetails = async (id, token) => {
-  // const { _id, token } = JSON.parse(localStorage.getItem('smefund-user'));
+const getFunders = async (data) => {
   const client = axios.create();
 
   client.interceptors.response.use(
@@ -15,12 +15,13 @@ const getUserDetails = async (id, token) => {
   try {
     const options = {
       method: 'get',
-      url: `https://smefundapi.herokuapp.com/api/v1/user/${id}`,
+      url: 'https://smefundapi.herokuapp.com/api/v1/user/smes',
       timeout: 30000,
+      data,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json;charset=UTF-8',
-        token
+        token: get('token')
       }
     };
     response = await client(options);
@@ -30,5 +31,4 @@ const getUserDetails = async (id, token) => {
   return response;
 };
 
-export default getUserDetails;
-
+export default getFunders;
