@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, useColorMode, Flex, Text } from "@chakra-ui/core";
 
-const About = () => {
+const Settings = () => {
   const { toggleColorMode } = useColorMode();
   return (
     <div>
@@ -13,4 +13,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Settings;

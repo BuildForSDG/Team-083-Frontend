@@ -1,58 +1,102 @@
 import React from 'react';
-import { Button, Avatar, Box, Flex, Text, LightMode, CloseButton } from '@chakra-ui/core';
+import { Box, Flex, Text, LightMode, CloseButton, Grid, useTheme } from '@chakra-ui/core';
 import PropTypes from 'prop-types';
 
-import { FaWallet } from 'react-icons/fa';
+import { FaUser, FaTachometerAlt, FaMoneyBill, FaUsers, FaSignOutAlt } from 'react-icons/fa';
 import { Link } from '@reach/router';
+// import bg from '../../images/sidebar-2.jpg';
+
+const AsideButton = ({ link, icon, value, isActive, setActiveButton }) => {
+  const theme = useTheme();
+  const primaryColor = theme.colors.asideButton;
+  return (
+    <Link to={link}>
+      <Grid
+        onClick={() => setActiveButton(link)}
+        rounded="md"
+        p="10px"
+        alignContent="center"
+        templateColumns="1fr 4fr"
+        background={link === isActive && { primaryColor }}
+      >
+        <Box w="20px" h="20px" color={link === isActive ? 'white' : 'gray.600'} alignSelf="center" as={icon} />
+        <Text color={link === isActive ? 'white' : 'gray.600'}>{value}</Text>
+      </Grid>
+    </Link>
+  );
+};
+
+AsideButton.propTypes = {
+  link: PropTypes.string,
+  icon: PropTypes.func,
+  value: PropTypes.string,
+  isActive: PropTypes.string,
+  setActiveButton: PropTypes.func
+};
 
 const Aside = ({ width, closeButton, onClose }) => {
+  const [activeButton, setActiveButton] = React.useState('/');
   return (
-    <Box overflow="auto" width={width || '200px'} position="fixed" height="100vh">
+    <Box
+      backgroundPosition="cover"
+      backgroundRepeat="no-repeat"
+      backgroundAttachment="fixed"
+      // backgroundImage={`url(${bg})`}
+      overflow="auto"
+      width={width || '200px'}
+      position="fixed"
+      height="100%"
+    >
       <LightMode>
         <Flex height="60px" bg="gray.600" justify="space-evenly" align="center">
-          <Avatar size="sm" name="F R" />
           <Text color="white" fontSize="2xl">
-            FinRec
+            SMEFund
           </Text>
-          {closeButton ? <CloseButton onClick={onClose} /> : ''}
+          {closeButton && <CloseButton color="white" onClick={onClose} /> }
         </Flex>
       </LightMode>
 
-      <Flex direction="column" justifyContent="space-evenly" align="center" height="200px" margin="2rem 0">
-        <Avatar size="xl" name="Default User" />
-        <Text fontSize="lg">Default User</Text>
-        <Box
-          alignItems="center"
-          width="80px"
-          justifyContent="space-around"
-          display="flex"
-          border={1}
-          borderRadius={10}
-          className="balance"
-        >
-          <Box as={FaWallet}></Box>
-          <Flex justifyContent="center" alignItems="center">
-            <Text currencyType>N</Text>
-            <Text>3000</Text>
-          </Flex>
-          <hr />
-        </Box>
-      </Flex>
+      {/* <Flex height="100vh" direction="column" justifyContent="space-between"> */}
+      <Grid rowGap="50%">
+        <Grid rowGap="2rem" padding="1rem">
+          <AsideButton
+            link="/"
+            icon={FaTachometerAlt}
+            value="Dashboard"
+            isActive={activeButton}
+            setActiveButton={setActiveButton}
+          />
+          <AsideButton
+            link="/profile"
+            icon={FaUser}
+            value="Profile"
+            isActive={activeButton}
+            setActiveButton={setActiveButton}
+          />
+          <AsideButton
+            link="/funders"
+            icon={FaUsers}
+            value="Funders"
+            isActive={activeButton}
+            setActiveButton={setActiveButton}
+          />
+          <AsideButton
+            link="/request-funds"
+            icon={FaMoneyBill}
+            value="Request funds"
+            isActive={activeButton}
+            setActiveButton={setActiveButton}
+          />
+        </Grid>
 
-      <Flex height="200px" alignItems="center" justifyContent="space-evenly" direction="column">
-        <Link to="/">
-          <Button className="go-to-dashboard">Dashboard</Button>
-        </Link>
-        <Link to="/transactions">
-          <Button className="go-to-transactions">Transactions</Button>
-        </Link>
-        <Link to="/settings">
-          <Button className="go-to-profile">Settings</Button>
-        </Link>
-        <Link to="/about">
-          <Button className="go-to-about">About</Button>
-        </Link>
-      </Flex>
+        <Box padding="1rem">
+          <Grid cursor="pointer" rounded="md" p="10px" alignContent="center" templateColumns="1fr 4fr">
+            <Box color="gray.600" w="20px" h="20px" alignSelf="center" as={FaSignOutAlt} />
+            <Text>Sign out</Text>
+          </Grid>
+        </Box>
+      </Grid>
+      {/* </Flex> */}
     </Box>
   );
 };

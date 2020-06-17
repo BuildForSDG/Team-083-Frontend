@@ -1,42 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
-import axios from 'axios';
 import './css/auth.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from '@reach/router';
 import { Box } from '@chakra-ui/core';
 import { useDispatch } from 'react-redux';
+import logUserIn from '../../http/log_in';
 
-const logUserIn = async (details) => {
-  const client = axios.create();
-
-  client.interceptors.response.use(
-    (res) => res,
-    (err) => {
-      throw new Error(err.response.data.message);
-    }
-  );
-
-  let response;
-  try {
-    const options = {
-      method: 'post',
-      url: 'https://smefundapi.herokuapp.com/api/v1/login',
-      timeout: 30000,
-      data: details,
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json;charset=UTF-8'
-      }
-    };
-    response = await client(options);
-  } catch (error) {
-    response = error.message;
-  }
-  return response;
-};
 
 const validate = (values) => {
   const errors = {};
