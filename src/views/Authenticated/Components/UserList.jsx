@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import UserCard from './UserCard';
 import getUsers from '../http/get_users';
 
-
 const UserList = ({ userType }) => {
   const [users, updateUsers] = React.useState();
   React.useEffect(() => {
@@ -12,7 +11,7 @@ const UserList = ({ userType }) => {
       const res = await getUsers(userType);
       updateUsers(res.data.data);
     })();
-  }, []);
+  }, [userType]);
 
   return (
     <Flex justifyContent="space-around" flexWrap="wrap">
