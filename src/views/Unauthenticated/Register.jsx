@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import { Box } from '@chakra-ui/core';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import PasswordValidator from 'password-validator';
@@ -9,6 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './css/auth.css';
 import { Link } from '@reach/router';
+import getUserDetails from '../Authenticated/http/get_user_details';
 
 const registerUser = async (details) => {
   const client = axios.create();
@@ -239,25 +241,33 @@ const initialValues = {
   userType: 'SME'
 };
 
-const onsubmit = async (values, { setSubmitting }) => {
-  const details = {
-    name: `${values.firstname} ${values.lastname}`,
-    email: values.email,
-    password: values.password,
-    userType: values.userType
-  };
-  const response = await registerUser(details);
-  if (response) {
-    setSubmitting(false);
-    if (typeof response === 'object') {
-      toast.success('Successful');
-    } else {
-      toast.error(`Error: ${response}`);
-    }
-  }
-};
+
 
 const Register = () => {
+  const dispatch = useDispatch();
+  const onsubmit = async (values, { setSubmitting }) => {
+
+    const details = {
+      name: `${values.firstname} ${values.lastname}`,
+      email: values.email,
+      password: values.password,
+      userType: values.userType
+    };
+    const response = await registerUser(details);
+    if (response) {
+      setSubmitting(false);
+      if (typeof response === 'object') {
+        (async () => {
+          const { _id: id, token } = response.data.data;
+          const userDetails = await getUserDetails(id, token);
+          toast.success('Successful');
+          dispatch({ type: 'AUTHENTICATE_USER', response, userDetails });
+        })()
+      } else {
+        toast.error(`Error: ${response}`);
+      }
+    }
+  };
   return (
     <Formik initialValues={initialValues} validate={validate} onSubmit={onsubmit}>
       {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
